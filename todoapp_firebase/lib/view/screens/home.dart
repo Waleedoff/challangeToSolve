@@ -9,6 +9,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? taskCnt;
+    String? updateTask;
+    int? index;
 
     // final TextEditingController takscontroller = TextEditingController();
     // var taskController = TextEditingController();
@@ -76,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                               child: Column(children: [
                                 TextField(
                                   onChanged: (value) {
-                                    taskCnt = value;
+                                    updateTask = value;
                                   },
                                   decoration: const InputDecoration(
                                       hintText: 'Enter your task?'),
@@ -87,8 +89,7 @@ class HomeScreen extends StatelessWidget {
                                 IconButton(
                                   icon: (const Icon(Icons.done)),
                                   onPressed: () {
-                                    controller.addTask(taskCnt);
-                                    Get.back();
+                                    controller.editTask(updateTask, index);
                                   },
                                 )
                               ]),
