@@ -9,6 +9,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? taskCnt;
+
+    // final TextEditingController takscontroller = TextEditingController();
+    // var taskController = TextEditingController();
+
     final controller = Get.put(TaskTodoList());
     return SafeArea(
       child: Scaffold(
