@@ -1,5 +1,3 @@
-// import 'package:get/get_state_manager/get_state_manager.dart';
-
 import 'package:get/get.dart';
 
 class TaskTodoList extends GetxController {
@@ -8,5 +6,13 @@ class TaskTodoList extends GetxController {
   addTask(value) {
     list.add(value);
     // update();
+  }
+
+  void deletTask(dd) {
+    list.removeAt(dd);
+  }
+
+  void editTask(value, index) {
+    list[index] = value;
   }
 }

@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? taskCnt;
+    String? updateValue;
 
     // final TextEditingController takscontroller = TextEditingController();
     // var taskController = TextEditingController();
@@ -69,13 +70,41 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
-                          icon: Icon(
+                          onPressed: () {
+                            Get.bottomSheet(Container(
+                              height: 300,
+                              color: Colors.white,
+                              child: Column(children: [
+                                TextField(
+                                  onChanged: (value) {
+                                    updateValue = value;
+                                  },
+                                  decoration: const InputDecoration(
+                                      hintText: 'Enter your task?'),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                IconButton(
+                                  icon: (const Icon(Icons.done)),
+                                  onPressed: () {
+                                    controller.editTask(updateValue, index);
+                                    Get.back();
+                                  },
+                                )
+                              ]),
+                            ));
+                          },
+                          icon: const Icon(
                             Icons.edit,
                             size: 18,
                           ),
                         ),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.delete))
+                        IconButton(
+                            onPressed: () {
+                              controller.deletTask(index);
+                            },
+                            icon: Icon(Icons.delete))
                       ],
                     ),
                   ),
