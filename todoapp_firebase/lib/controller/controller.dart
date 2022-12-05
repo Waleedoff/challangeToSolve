@@ -9,4 +9,9 @@ class TaskTodoList extends GetxController {
     list.add(value);
     // update();
   }
+
+  editTask(value, index) {
+    list[index] = value;
+    list.clear();
+  }
 }

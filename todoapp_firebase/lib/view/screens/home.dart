@@ -69,7 +69,31 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.bottomSheet(Container(
+                              height: 300,
+                              color: Colors.white,
+                              child: Column(children: [
+                                TextField(
+                                  onChanged: (value) {
+                                    taskCnt = value;
+                                  },
+                                  decoration: const InputDecoration(
+                                      hintText: 'Enter your task?'),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                IconButton(
+                                  icon: (const Icon(Icons.done)),
+                                  onPressed: () {
+                                    controller.addTask(taskCnt);
+                                    Get.back();
+                                  },
+                                )
+                              ]),
+                            ));
+                          },
                           icon: Icon(
                             Icons.edit,
                             size: 18,
