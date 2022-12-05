@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? newTask;
     // final TextEditingController takscontroller = TextEditingController();
     // var taskController = TextEditingController();
     final controller = Get.put(TaskTodoList());
@@ -25,10 +26,7 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.white,
                     child: Column(children: [
                       TextField(
-                        onSubmitted: (value) {
-                          var ct = value;
-                          // controller.addTask(value);
-                        },
+                        onChanged: ((value) => newTask = value),
                         decoration:
                             InputDecoration(hintText: 'Enter your task?'),
                       ),
@@ -38,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                       IconButton(
                         icon: (Icon(Icons.done)),
                         onPressed: () {
-                          // controller.addTask();
+                          controller.addTask(newTask);
                         },
                       )
                     ]),
