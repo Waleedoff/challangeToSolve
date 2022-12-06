@@ -19,6 +19,8 @@ class HomeScreen extends StatelessWidget {
     // var taskController = TextEditingController();
 
     final controller = Get.put(TaskTodoList());
+    print('list');
+    print(controller.box.read("list"));
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -44,6 +46,7 @@ class HomeScreen extends StatelessWidget {
                       icon: (const Icon(Icons.done)),
                       onPressed: () {
                         controller.addTask(taskCnt);
+                        print(controller.box.read("list"));
                         Get.back();
                       },
                     )
@@ -57,7 +60,7 @@ class HomeScreen extends StatelessWidget {
         ),
         body: Obx(
           () => ListView.builder(
-            itemBuilder: ((context, index) {
+            itemBuilder: ((context, int index) {
               return Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: SizedBox(
@@ -69,9 +72,7 @@ class HomeScreen extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.only(left: 5),
                           width: 310,
-                          child: Text(
-                            controller.list[index],
-                          ),
+                          child: Text(controller.box.read("list")[index]),
                         ),
                         IconButton(
                           onPressed: () {
@@ -84,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                                     updateTask = value;
                                   },
                                   decoration: const InputDecoration(
-                                      hintText: 'Enter your task?'),
+                                      hintText: 'Enter your daily task?'),
                                 ),
                                 const SizedBox(
                                   height: 20,
@@ -95,12 +96,17 @@ class HomeScreen extends StatelessWidget {
                                     controller.editTask(updateTask, index);
 
                                     Get.back();
+                                    Get.snackbar('Task Added',
+                                        '${controller.list[index]}',
+                                        backgroundColor: blackColor,
+                                        colorText: Colors.white,
+                                        snackPosition: SnackPosition.BOTTOM);
                                   },
                                 )
                               ]),
                             ));
                           },
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.edit,
                             size: 18,
                           ),
@@ -108,6 +114,7 @@ class HomeScreen extends StatelessWidget {
                         IconButton(
                             onPressed: () {
                               controller.deletTask(index);
+                              // controller.box.remove('list');
                             },
                             icon: Icon(Icons.delete))
                       ],

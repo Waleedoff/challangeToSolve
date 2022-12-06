@@ -1,18 +1,39 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class TaskTodoList extends GetxController {
-  final list = ['demo'].obs;
+  final GetStorage box = GetStorage(); //create storage in your phone.
+  var list = [].obs;
 
-  addTask(value) {
+  @override
+  void onInit() {
+    readTasks();
+    // deletTask('list');
+    super.onInit();
+  }
+
+  void readTasks() async {
+    await box.read('list');
+    box.writeIfNull('list', list);
+    list.addAll(box.read('list'));
+    print(list);
+  }
+
+//knew capture.
+
+  addTask(value) async {
     list.add(value);
-    // update();
+    await box.write('list', list);
   }
 
-  void deletTask(dd) {
+  void deletTask(dd) async {
     list.removeAt(dd);
+    await box.remove('list');
+    box.writeIfNull('list', list);
   }
 
-  void editTask(value, index) {
+  Future<void> editTask(value, index) async {
     list[index] = value;
+    await box.write("list", list);
   }
 }
