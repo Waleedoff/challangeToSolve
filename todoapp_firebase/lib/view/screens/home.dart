@@ -9,8 +9,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? taskCnt;
+
     String? updateTask;
     int? index;
+
+    String? updateValue;
 
     // final TextEditingController takscontroller = TextEditingController();
     // var taskController = TextEditingController();
@@ -90,18 +93,23 @@ class HomeScreen extends StatelessWidget {
                                   icon: (const Icon(Icons.done)),
                                   onPressed: () {
                                     controller.editTask(updateTask, index);
+
                                     Get.back();
                                   },
                                 )
                               ]),
                             ));
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.edit,
                             size: 18,
                           ),
                         ),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.delete))
+                        IconButton(
+                            onPressed: () {
+                              controller.deletTask(index);
+                            },
+                            icon: Icon(Icons.delete))
                       ],
                     ),
                   ),
