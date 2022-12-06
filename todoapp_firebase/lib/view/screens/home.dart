@@ -1,3 +1,6 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todoapp_firebase/controller/controller.dart';
@@ -16,7 +19,7 @@ class HomeScreen extends StatelessWidget {
     String? updateValue;
 
     // final TextEditingController takscontroller = TextEditingController();
-    // var taskController = TextEditingController();
+    var controller001 = TextEditingController();
 
     final controller = Get.put(TaskTodoList());
     print('list');
@@ -33,6 +36,7 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.white,
                   child: Column(children: [
                     TextField(
+                      controller: controller001,
                       onChanged: (value) {
                         taskCnt = value;
                       },
@@ -47,6 +51,8 @@ class HomeScreen extends StatelessWidget {
                       onPressed: () {
                         controller.addTask(taskCnt);
                         print(controller.box.read("list"));
+                        final Task = controller001.text;
+                        createTask(Task: Task);
                         Get.back();
                       },
                     )
@@ -81,9 +87,9 @@ class HomeScreen extends StatelessWidget {
                               color: Colors.white,
                               child: Column(children: [
                                 TextField(
-                                  onChanged: (value) {
-                                    updateTask = value;
-                                  },
+                                  // onChanged: (value) {
+                                  //   updateTask = value;
+                                  // },
                                   decoration: const InputDecoration(
                                       hintText: 'Enter your daily task?'),
                                 ),
@@ -128,5 +134,14 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future createTask({required String Task}) async {
+    final docTask = FirebaseFirestore.instance.collection('Task').doc();
+    final json = {
+      'Task': Task,
+      'id': 12,
+    };
+    await docTask.set(json);
   }
 }
