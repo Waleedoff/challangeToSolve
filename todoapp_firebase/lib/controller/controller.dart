@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 class TaskTodoList extends GetxController {
   final list = ['demo'].obs;
-  final oldList = [];
 
   addTask(value) {
     list.add(value);

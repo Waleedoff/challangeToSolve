@@ -90,6 +90,7 @@ class HomeScreen extends StatelessWidget {
                                   icon: (const Icon(Icons.done)),
                                   onPressed: () {
                                     controller.editTask(updateTask, index);
+                                    Get.back();
                                   },
                                 )
                               ]),
