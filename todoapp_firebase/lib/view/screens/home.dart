@@ -78,7 +78,8 @@ class HomeScreen extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.only(left: 5),
                           width: 310,
-                          child: Text(controller.box.read("list")[index]),
+                          child: Text(
+                              controller.box.read("list")[index].toString()),
                         ),
                         IconButton(
                           onPressed: () {
@@ -87,9 +88,9 @@ class HomeScreen extends StatelessWidget {
                               color: Colors.white,
                               child: Column(children: [
                                 TextField(
-                                  // onChanged: (value) {
-                                  //   updateTask = value;
-                                  // },
+                                  onChanged: (value) {
+                                    updateTask = value;
+                                  },
                                   decoration: const InputDecoration(
                                       hintText: 'Enter your daily task?'),
                                 ),
