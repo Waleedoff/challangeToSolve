@@ -1,16 +1,50 @@
-# todoapp_firebase
+#Firebase with IOS
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+#####   Open firebase and  go to the console .
 
-A few resources to get you started if this is your first Flutter project:
+##### Add project and type name for your own project.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+##### Choose your project and click on IOS icon
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##### Apple bundle ID 
+
+![alt text for screen readers](https://i.ibb.co/ZWTy55d/Screen-Shot-1444-05-13-at-10-39-49-AM.png).
+
+
+
+
+
+
+
+
+
+ #####in the visual studio code   Runner folder -> Reval in finder 
+ 
+![alt text for screen readers](https://i.ibb.co/ySKBZyg/Screen-Shot-1444-05-13-at-10-56-52-AM.png).
+ 
+ 
+ #### —> runner.xcworkspace  —> move to Xcode ->
+ ####--> copy bundle identifeir name and put it  in Apple bundle ID . And requisterApp.
+
+
+##### Download ```GoogleService_info.plist``` check on the name 
+
+>Back to Xcode and past or put the googleService-info.plist
+	inside the Runner.:fa-share:
+
+##### activate Copy items if needed .
+
+
+##### back to visual studio code and open Podfile folder 
+
+#####Activate first or second  line, remove the commment  ``` platform: iOS ’11:0’  ```
+
+
+##### open terminal and write ``` Pod repo update ``` 
+
+##### and type --> ```sudo gem install cocoapods.```
+
+##### pod setup —> and write ``` flutter run ```
+
