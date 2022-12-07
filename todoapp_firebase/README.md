@@ -1,4 +1,4 @@
-#Firebase with IOS
+# Firebase with IOS
 
 
 
@@ -20,13 +20,13 @@
 
 
 
- #####in the visual studio code   Runner folder -> Reval in finder 
+ ##### Go to the visual studio code   Runner folder -> Reval in finder 
  
 ![alt text for screen readers](https://i.ibb.co/ySKBZyg/Screen-Shot-1444-05-13-at-10-56-52-AM.png).
  
  
  #### —> runner.xcworkspace  —> move to Xcode ->
- ####--> copy bundle identifeir name and put it  in Apple bundle ID . And requisterApp.
+ #### -> copy bundle identifeir name and put it  in Apple bundle ID . And requisterApp.
 
 
 ##### Download ```GoogleService_info.plist``` check on the name 
@@ -39,12 +39,12 @@
 
 ##### back to visual studio code and open Podfile folder 
 
-#####Activate first or second  line, remove the commment  ``` platform: iOS ’11:0’  ```
+##### Activate first or second  line, remove the commment  ``` platform: iOS ’11:0’  ```
 
 
 ##### open terminal and write ``` Pod repo update ``` 
 
-##### and type --> ```sudo gem install cocoapods.```
+##### and type -> ```sudo gem install cocoapods.```
 
-##### pod setup —> and write ``` flutter run ```
+##### pod setup -> and write ``` flutter run ```
 
